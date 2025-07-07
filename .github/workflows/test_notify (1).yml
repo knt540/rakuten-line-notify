@@ -16,18 +16,18 @@ jobs:
         run: pip install requests
 
       - name: Send test notification to Discord
-        env:
-          DISCORD_WEBHOOK_URL_1: ${{ secrets.DISCORD_WEBHOOK_URL_1 }}
-        run: |
-          python -c '
+  env:
+    DISCORD_WEBHOOK_URL_1: ${{ secrets.DISCORD_WEBHOOK_URL_1 }}
+  run: |
+    python -c "
 import os
 import requests
 
-webhook_url = os.getenv("DISCORD_WEBHOOK_URL_1")
-message = "✅ Discord Webhook テスト通知です。"
-response = requests.post(webhook_url, json={"content": message})
+webhook_url = os.getenv('DISCORD_WEBHOOK_URL_1')
+message = '✅ Discord Webhook テスト通知です。'
+response = requests.post(webhook_url, json={'content': message})
 if response.status_code != 204:
-    print(f"通知失敗: {response.status_code} - {response.text}")
+    print(f'通知失敗: {response.status_code} - {response.text}')
 else:
-    print("通知成功")
-'
+    print('通知成功')
+"
