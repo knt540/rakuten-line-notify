@@ -1,8 +1,10 @@
 name: Rakuten Book Checker
 
 on:
+  workflow_dispatch:  # 手動実行を許可
   schedule:
-    - cron: '*/1 * * * *'  # 毎分実行（UTC）
+    - cron: '*/1 * * * *'
+
 
 jobs:
   check-book:
